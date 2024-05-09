@@ -1,0 +1,7 @@
+<div class="container mt-2">
+  <%= simple_form_for([@list, @bookmark]) do |f| %>
+    <%= f.association :movie %>
+    <%= f.input :comment %>
+    <%= f.submit 'Submit', class:"text-decoration-none btn btn-secondary"  %>
+  <% end %>
+</div>
