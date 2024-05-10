@@ -4,13 +4,14 @@ class ListsController < ApplicationController
   end
   def show
     @list = List.find(params[:id])
-
+    @review = Review.new
   end
   def new
     @list = List.new
   end
   def create
     @list = List.new(list_params)
+
     if @list.save
       redirect_to list_path(@list)
     else
@@ -22,7 +23,7 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
   end
 
 end

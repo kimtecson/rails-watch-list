@@ -1,14 +1,19 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-    <h1>Welcome to my lists!</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'kate-trysh-Dnkr_lmdKi8-unsplash.jpg', alt: "text" %>);"></div>
+<div class="container mt-2">
+  <h2>Movie Lists</h2>
 </div>
-<div class="container">
-<h2>My Lists</h2>
 <%= link_to 'Create a movie list', new_list_path,  class: "text-decoration-none btn btn-secondary"%>
-<div class="cards">
-</div>
-<% @lists.each do |list| %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    <%= link_to list.name, list_path(list),  class: "text-decoration-none"%>
-<% end %>
+<div class="container d-flex mt-3 d-flex">
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="card">
+      <%# <div class="card mb-3 mt-3" style="max-width: 300px;"> %>
+      <% @lists.each do |list| %>
+        <img src="<%=cl_image_path(list.photo.key) %>" class="card-img-top" alt="<%= list.name %>">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to list.name, list_path(list),  class: "text-decoration-none"%></h5>
+        </div>
+      <% end %>
+    </div>
   </div>
+</div>
 </div>
